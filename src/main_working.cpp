@@ -6,6 +6,9 @@
 #include <iomanip>
 #include <unordered_set>
 #include <algorithm>
+#ifdef _WIN32
+#include <windows.h>
+#endif
 
 #include "pcap_reader.h"
 #include "packet_parser.h"
@@ -93,6 +96,10 @@ Example:
 }
 
 int main(int argc, char* argv[]) {
+#ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+#endif
     if (argc < 3) {
         printUsage(argv[0]);
         return 1;

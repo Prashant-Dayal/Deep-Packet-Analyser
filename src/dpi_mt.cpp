@@ -15,6 +15,9 @@
 #include <chrono>
 #include <iomanip>
 #include <algorithm>
+#ifdef _WIN32
+#include <windows.h>
+#endif
 #include <optional>
 
 #include "pcap_reader.h"
@@ -607,6 +610,10 @@ Example:
 }
 
 int main(int argc, char* argv[]) {
+#ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+#endif
     if (argc < 3) {
         printUsage(argv[0]);
         return 1;
